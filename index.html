@@ -1,231 +1,56 @@
-here is the code <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School District Waste Management Calculator</title>
-<link rel="icon" type="image/png" href="miltek-favicon.png">
-
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            background: white;
-            padding: 40px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            color: #1e40af;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            color: #64748b;
-        }
-
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .input-section, .results-section {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .section-header h2 {
-            font-size: 1.5rem;
-            margin-left: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .calculate-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .results-highlight {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .results-highlight h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .results-highlight .amount {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .results-highlight .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .metric-card {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-        }
-
-        .metric-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1e40af;
-        }
-
-        .benefits-section {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        .benefits-section h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #374151;
-        }
-
-        .benefit-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .benefit-row:last-child {
-            border-bottom: none;
-        }
-
-        .generate-pdf-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .placeholder-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-        }
-
-        .placeholder-results .icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f8fafc; color: #334155; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; background: white; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; color: #1e40af; margin-bottom: 10px; }
+        .header p { font-size: 1.1rem; color: #64748b; }
+        .calculator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        @media (max-width: 768px) { .calculator-grid { grid-template-columns: 1fr; } }
+        .input-section, .results-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .section-header { display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0; }
+        .section-header h2 { font-size: 1.5rem; margin-left: 10px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #374151; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .payment-option { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+        .payment-option.selected { border-color: #3b82f6; background: #eff6ff; }
+        .payment-option h3 { font-size: 1.1rem; margin-bottom: 5px; color: #374151; }
+        .payment-option p { font-size: 0.9rem; color: #64748b; }
+        .payment-details { background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .calculate-btn { width: 100%; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .calculate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .results-highlight { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 25px; }
+        .results-highlight h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .results-highlight .amount { font-size: 3rem; font-weight: bold; margin-bottom: 10px; }
+        .results-highlight .subtitle { font-size: 1.1rem; opacity: 0.9; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
+        .metric-card { background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6; }
+        .metric-label { font-size: 0.9rem; color: #64748b; font-weight: 600; margin-bottom: 5px; }
+        .metric-value { font-size: 1.8rem; font-weight: bold; color: #1e40af; }
+        .benefits-section { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+        .benefits-section h4 { font-size: 1.2rem; margin-bottom: 15px; color: #374151; }
+        .benefit-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e2e8f0; }
+        .benefit-row:last-child { border-bottom: none; }
+        .generate-pdf-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .placeholder-results { text-align: center; padding: 60px 20px; color: #64748b; }
+        .placeholder-results .icon { font-size: 4rem; margin-bottom: 20px; }
+        .hidden { display: none; }
+        .payment-summary { background: #eff6ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #3b82f6; }
+        .payment-summary h4 { color: #1e40af; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-<img src="miltek-logo.png" alt="Mil-tek Logo" style="height: 60px; margin-bottom: 10px;">
-            <h1>🏫 School District Waste Management Calculator</h1>
+            <h1>School District Waste Management Calculator</h1>
             <p>Calculate your potential savings with Mil-tek waste compaction equipment</p>
         </div>
 
@@ -237,43 +62,34 @@ here is the code <!DOCTYPE html>
                 </div>
 
                 <div class="form-group">
-                    <label for="schoolName">School/District Name</label>
+                    <label>School/District Name</label>
                     <input type="text" id="schoolName" placeholder="Enter school or district name">
-                </div>
-
-                <div class="form-group">
-                    <label for="schoolType">Primary School Type in District</label>
-                    <select id="schoolType">
-                        <option value="elementary">Elementary Focused District</option>
-                        <option value="secondary">Secondary Focused District</option>
-                        <option value="mixed">Mixed Elementary & Secondary District</option>
-                    </select>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="elementarySchools">Number of Elementary Schools</label>
+                        <label>Number of Elementary Schools</label>
                         <input type="number" id="elementarySchools" placeholder="2" value="0">
                     </div>
                     <div class="form-group">
-                        <label for="secondarySchools">Number of Secondary Schools</label>
+                        <label>Number of Secondary Schools</label>
                         <input type="number" id="secondarySchools" placeholder="1" value="0">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="elementaryStudents">Elementary Students (Total)</label>
+                        <label>Elementary Students (Total)</label>
                         <input type="number" id="elementaryStudents" placeholder="300">
                     </div>
                     <div class="form-group">
-                        <label for="secondaryStudents">Secondary Students (Total)</label>
+                        <label>Secondary Students (Total)</label>
                         <input type="number" id="secondaryStudents" placeholder="200">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="staffCount">Total Staff (All Schools)</label>
+                    <label>Total Staff (All Schools)</label>
                     <input type="number" id="staffCount" placeholder="50">
                 </div>
 
@@ -283,27 +99,99 @@ here is the code <!DOCTYPE html>
                 </div>
 
                 <div class="form-group">
-                    <label for="wastePickups">Waste Pickups Per Week (Per School)</label>
-                    <input type="number" id="wastePickups" placeholder="3">
-                </div>
-
-                <div class="form-group">
-                    <label for="costPerPickup">Cost Per Pickup ($)</label>
+                    <label>Cost Per Pickup ($)</label>
                     <input type="number" id="costPerPickup" placeholder="150">
                 </div>
 
-                <div class="form-group">
-                    <label for="equipmentCost">Mil-tek Equipment Cost per School ($)</label>
-                    <input type="number" id="equipmentCost" placeholder="8000" value="8000">
+                <div class="section-header" style="color: #dc2626; margin-top: 30px;">
+                    <span style="font-size: 1.5rem;">🗑️</span>
+                    <h2>Dumpster Configuration</h2>
                 </div>
 
-                <button class="calculate-btn" onclick="calculateResults()">
-                    📊 Calculate ROI & Generate Report
-                </button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Trash Dumpster Size (Yards)</label>
+                        <select id="trashDumpsterSize">
+                            <option value="2">2 Yard</option>
+                            <option value="3">3 Yard</option>
+                            <option value="4" selected>4 Yard</option>
+                            <option value="6">6 Yard</option>
+                            <option value="8">8 Yard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Trash Dumpsters per School</label>
+                        <input type="number" id="trashDumpsterCount" placeholder="2" value="2">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cardboard Dumpster Size (Yards)</label>
+                        <select id="cardboardDumpsterSize">
+                            <option value="2">2 Yard</option>
+                            <option value="3">3 Yard</option>
+                            <option value="4" selected>4 Yard</option>
+                            <option value="6">6 Yard</option>
+                            <option value="8">8 Yard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Cardboard Dumpsters per School</label>
+                        <input type="number" id="cardboardDumpsterCount" placeholder="1" value="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>School Days Per Year</label>
+                    <input type="number" id="schoolDaysPerYear" placeholder="180" value="180">
+                </div>
+
+                <div class="section-header" style="color: #7c3aed; margin-top: 30px;">
+                    <span style="font-size: 1.5rem;">💳</span>
+                    <h2>Equipment Payment Option</h2>
+                </div>
+
+                <div class="payment-options">
+                    <div class="payment-option" id="rentalOption" onclick="selectPaymentOption('rental')">
+                        <h3>Monthly Rental</h3>
+                        <p>Flexible monthly payments</p>
+                    </div>
+                    <div class="payment-option selected" id="purchaseOption" onclick="selectPaymentOption('purchase')">
+                        <h3>Outright Purchase</h3>
+                        <p>One-time equipment investment</p>
+                    </div>
+                </div>
+
+                <div class="payment-details">
+                    <div id="rentalDetails" class="hidden">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Rental Period (Months)</label>
+                                <input type="number" id="rentalMonths" placeholder="36" value="36">
+                            </div>
+                            <div class="form-group">
+                                <label>Monthly Rental per School ($)</label>
+                                <input type="number" id="monthlyRental" placeholder="250">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="purchaseDetails">
+                        <div class="form-group">
+                            <label>Equipment Cost per School ($)</label>
+                            <input type="number" id="equipmentCost" placeholder="8000" value="8000">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="paymentSummary" class="payment-summary hidden">
+                    <h4>Payment Summary</h4>
+                    <div id="summaryContent"></div>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateResults()">Calculate ROI & Generate Report</button>
                 
-                <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563); display: none;" id="resetBtn">
-                    🔄 Reset Calculator
-                </button>
+                <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563); display: none;" id="resetBtn">Reset Calculator</button>
             </div>
 
             <div class="results-section">
@@ -315,9 +203,9 @@ here is the code <!DOCTYPE html>
 
                 <div id="results" class="hidden">
                     <div class="results-highlight">
-                        <h3>Estimated Annual Savings</h3>
+                        <h3>Net Annual Savings</h3>
                         <div class="amount" id="annualSavings">$0</div>
-                        <div class="subtitle">ROI: <span id="roiPercent">0</span>% over 5 years</div>
+                        <div class="subtitle">Monthly Net Savings: $<span id="monthlyNetSavings">0</span></div>
                     </div>
 
                     <div class="metrics-grid">
@@ -326,36 +214,28 @@ here is the code <!DOCTYPE html>
                             <div class="metric-value"><span id="paybackPeriod">0</span> months</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Monthly Savings</div>
-                            <div class="metric-value">$<span id="monthlySavings">0</span></div>
+                            <div class="metric-label">Monthly Equipment Cost</div>
+                            <div class="metric-value">$<span id="monthlyEquipmentCost">0</span></div>
                         </div>
                         <div class="metric-card">
                             <div class="metric-label">Waste Reduction</div>
                             <div class="metric-value"><span id="wasteReduction">0</span>%</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">5-Year Net Savings</div>
+                            <div class="metric-label">5-Year Net Benefit</div>
                             <div class="metric-value">$<span id="fiveYearSavings">0</span></div>
                         </div>
                     </div>
 
                     <div class="benefits-section">
-                        <h4>♻️ District Benefits</h4>
+                        <h4>District Analysis</h4>
                         <div class="benefit-row">
-                            <span>Elementary Schools:</span>
-                            <span><strong><span id="elementarySchoolsDisplay">0</span> schools</strong></span>
+                            <span>Total Schools:</span>
+                            <span><strong><span id="totalSchoolsDisplay">0</span> schools</strong></span>
                         </div>
                         <div class="benefit-row">
-                            <span>Secondary Schools:</span>
-                            <span><strong><span id="secondarySchoolsDisplay">0</span> schools</strong></span>
-                        </div>
-                        <div class="benefit-row">
-                            <span>Elementary Students:</span>
-                            <span><strong><span id="elementaryStudentsDisplay">0</span> students</strong></span>
-                        </div>
-                        <div class="benefit-row">
-                            <span>Secondary Students:</span>
-                            <span><strong><span id="secondaryStudentsDisplay">0</span> students</strong></span>
+                            <span>Total Students:</span>
+                            <span><strong><span id="totalStudentsDisplay">0</span> students</strong></span>
                         </div>
                         <div class="benefit-row">
                             <span>Total Annual Waste:</span>
@@ -369,144 +249,391 @@ here is the code <!DOCTYPE html>
                             <span>General Trash Waste:</span>
                             <span><strong><span id="trashWasteDisplay">0</span> lbs/year</strong></span>
                         </div>
+                    </div>
+
+                    <div class="benefits-section">
+                        <h4>School Year vs Summer Analysis</h4>
                         <div class="benefit-row">
-                            <span>Annual Savings per School:</span>
-                            <span><strong>$<span id="savingsPerSchool">0</span></strong></span>
+                            <span>School Days Per Year:</span>
+                            <span><strong><span id="schoolDaysDisplay">180</span> days</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Summer Days:</span>
+                            <span><strong><span id="summerDaysDisplay">185</span> days</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Summer Waste Share:</span>
+                            <span><strong><span id="summerWasteShare">0</span>%</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>School Year Pickups:</span>
+                            <span><strong><span id="schoolYearPickupsDisplay">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Summer Pickups:</span>
+                            <span><strong><span id="summerPickupsDisplay">0</span></strong></span>
                         </div>
                     </div>
 
-                    <button class="generate-pdf-btn" onclick="generatePDFReport()">
-                        📄 Generate PDF Report
-                    </button>
+                    <div class="benefits-section">
+                        <h4>Dumpster Analysis (Per School)</h4>
+                        <div class="benefit-row">
+                            <span>Trash Dumpsters:</span>
+                            <span><strong><span id="trashDumpsterInfo">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Cardboard Dumpsters:</span>
+                            <span><strong><span id="cardboardDumpsterInfo">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Weekly Pickups (Current):</span>
+                            <span><strong><span id="weeklyPickups">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Weekly Pickups (Reduced):</span>
+                            <span><strong><span id="reducedWeeklyPickups">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Annual Pickups (Current):</span>
+                            <span><strong><span id="annualPickups">0</span></strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Annual Pickups (Reduced):</span>
+                            <span><strong><span id="reducedAnnualPickups">0</span></strong></span>
+                        </div>
+                    </div>
+
+                    <button class="generate-pdf-btn" onclick="generatePDFReport()">Generate PDF Report</button>
                     
-                    <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563);">
-                        🔄 New Calculation
-                    </button>
+                    <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563);">New Calculation</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        var calculationResults = null;
+        let calculationResults = null;
+        let paymentOption = 'purchase';
 
-        function calculateResults() {
-            var schoolName = document.getElementById('schoolName').value || 'Your School District';
-            var elementarySchools = parseInt(document.getElementById('elementarySchools').value) || 0;
-            var secondarySchools = parseInt(document.getElementById('secondarySchools').value) || 0;
-            var numberOfSchools = elementarySchools + secondarySchools;
-            var elementaryStudents = parseInt(document.getElementById('elementaryStudents').value) || 0;
-            var secondaryStudents = parseInt(document.getElementById('secondaryStudents').value) || 0;
-            var totalStudents = elementaryStudents + secondaryStudents;
-            var staff = parseInt(document.getElementById('staffCount').value) || 0;
-            var pickups = parseInt(document.getElementById('wastePickups').value) || 0;
-            var costPerPickup = parseFloat(document.getElementById('costPerPickup').value) || 0;
-            var equipmentCostPerSchool = parseFloat(document.getElementById('equipmentCost').value) || 8000;
+        function selectPaymentOption(option) {
+            paymentOption = option;
+            
+            document.getElementById('rentalOption').classList.remove('selected');
+            document.getElementById('purchaseOption').classList.remove('selected');
+            document.getElementById(option + 'Option').classList.add('selected');
+            
+            if (option === 'rental') {
+                document.getElementById('rentalDetails').classList.remove('hidden');
+                document.getElementById('purchaseDetails').classList.add('hidden');
+            } else {
+                document.getElementById('rentalDetails').classList.add('hidden');
+                document.getElementById('purchaseDetails').classList.remove('hidden');
+            }
+            
+            updatePaymentSummary();
+        }
 
-            if (numberOfSchools === 0 || totalStudents === 0 || pickups === 0 || costPerPickup === 0) {
-                alert('Please fill in all required fields');
+        function updatePaymentSummary() {
+            const elementarySchools = parseInt(document.getElementById('elementarySchools').value) || 0;
+            const secondarySchools = parseInt(document.getElementById('secondarySchools').value) || 0;
+            const totalSchools = elementarySchools + secondarySchools;
+            
+            if (totalSchools === 0) {
+                document.getElementById('paymentSummary').classList.add('hidden');
                 return;
             }
-
-            var totalEquipmentCost = equipmentCostPerSchool * numberOfSchools;
             
-            // Calculate waste generation in lbs per year
-            var elementaryCardboard = elementaryStudents * 23.31;  // 23.5% of 99.21
-            var elementaryTrash = elementaryStudents * 75.9;       // 76.5% of 99.21
-            var secondaryCardboard = secondaryStudents * 11.40;    // 23.5% of 48.51
-            var secondaryTrash = secondaryStudents * 37.11;        // 76.5% of 48.51
-            var staffWaste = staff * 33.07;
+            let summaryContent = '';
             
-            var totalCardboardWaste = elementaryCardboard + secondaryCardboard;
-            var totalTrashWaste = elementaryTrash + secondaryTrash + staffWaste;
-            var totalAnnualWasteLbs = totalCardboardWaste + totalTrashWaste;
+            if (paymentOption === 'rental') {
+                const months = parseInt(document.getElementById('rentalMonths').value) || 36;
+                const monthlyRental = parseFloat(document.getElementById('monthlyRental').value) || 0;
+                const totalMonthly = monthlyRental * totalSchools;
+                const totalOverPeriod = totalMonthly * months;
+                
+                summaryContent = '<strong>Monthly Cost:</strong> $' + totalMonthly.toLocaleString() + ' (' + totalSchools + ' schools)<br><strong>Total over ' + months + ' months:</strong> $' + totalOverPeriod.toLocaleString();
+            } else {
+                const equipmentCost = parseFloat(document.getElementById('equipmentCost').value) || 8000;
+                const totalCost = equipmentCost * totalSchools;
+                
+                summaryContent = '<strong>Total Investment:</strong> $' + totalCost.toLocaleString() + ' (' + totalSchools + ' schools)';
+            }
             
-            var annualWasteCollectionCostPerSchool = pickups * costPerPickup * 36;
-            var totalAnnualWasteCollectionCost = annualWasteCollectionCostPerSchool * numberOfSchools;
+            document.getElementById('summaryContent').innerHTML = summaryContent;
+            document.getElementById('paymentSummary').classList.remove('hidden');
+        }
 
-            var newPickupsNeeded = Math.ceil(pickups * 0.5);
-            var newAnnualCostPerSchool = newPickupsNeeded * costPerPickup * 36;
-            var totalNewAnnualCost = newAnnualCostPerSchool * numberOfSchools;
-            
-            var annualSavings = totalAnnualWasteCollectionCost - totalNewAnnualCost;
-            var monthlyVariableSavings = annualSavings / 12;
-            var paybackPeriod = monthlyVariableSavings > 0 ? totalEquipmentCost / monthlyVariableSavings : 0;
-            
-            var fiveYearSavings = (annualSavings * 5) - totalEquipmentCost;
-            var roi = totalEquipmentCost > 0 ? Math.round((fiveYearSavings / totalEquipmentCost) * 100) : 0;
+        function calculateResults() {
+            try {
+                const schoolName = document.getElementById('schoolName').value || 'Your School District';
+                const elementarySchools = parseInt(document.getElementById('elementarySchools').value) || 0;
+                const secondarySchools = parseInt(document.getElementById('secondarySchools').value) || 0;
+                const numberOfSchools = elementarySchools + secondarySchools;
+                const elementaryStudents = parseInt(document.getElementById('elementaryStudents').value) || 0;
+                const secondaryStudents = parseInt(document.getElementById('secondaryStudents').value) || 0;
+                const totalStudents = elementaryStudents + secondaryStudents;
+                const staff = parseInt(document.getElementById('staffCount').value) || 0;
+                const costPerPickup = parseFloat(document.getElementById('costPerPickup').value) || 0;
+                const trashDumpsterSize = parseInt(document.getElementById('trashDumpsterSize').value);
+                const trashDumpsterCount = parseInt(document.getElementById('trashDumpsterCount').value) || 2;
+                const cardboardDumpsterSize = parseInt(document.getElementById('cardboardDumpsterSize').value);
+                const cardboardDumpsterCount = parseInt(document.getElementById('cardboardDumpsterCount').value) || 1;
+                const schoolDaysPerYear = parseInt(document.getElementById('schoolDaysPerYear').value) || 180;
 
-            var avgElementaryStudents = elementarySchools > 0 ? Math.round(elementaryStudents / elementarySchools) : 0;
-            var avgSecondaryStudents = secondarySchools > 0 ? Math.round(secondaryStudents / secondarySchools) : 0;
+                if (numberOfSchools === 0 || totalStudents === 0 || costPerPickup === 0) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
 
-            calculationResults = {
-                schoolName: schoolName,
-                elementarySchools: elementarySchools,
-                secondarySchools: secondarySchools,
-                numberOfSchools: numberOfSchools,
-                elementaryStudents: elementaryStudents,
-                secondaryStudents: secondaryStudents,
-                totalStudents: totalStudents,
-                staff: staff,
-                avgElementaryStudents: avgElementaryStudents,
-                avgSecondaryStudents: avgSecondaryStudents,
-                totalAnnualWasteLbs: Math.round(totalAnnualWasteLbs),
-                cardboardWaste: Math.round(totalCardboardWaste),
-                trashWaste: Math.round(totalTrashWaste),
-                currentAnnualCost: Math.round(totalAnnualWasteCollectionCost),
-                newAnnualCost: Math.round(totalNewAnnualCost),
-                annualSavings: Math.round(annualSavings),
-                monthlyVariableSavings: Math.round(monthlyVariableSavings),
-                paybackPeriod: Math.round(paybackPeriod * 10) / 10,
-                fiveYearSavings: Math.round(fiveYearSavings),
-                roi: roi,
-                equipmentCostPerSchool: equipmentCostPerSchool,
-                totalEquipmentCost: totalEquipmentCost,
-                currentPickups: pickups,
-                newPickups: newPickupsNeeded,
-                wasteReduction: Math.round((1 - (newPickupsNeeded / pickups)) * 100),
-                savingsPerSchool: Math.round(annualSavings / numberOfSchools)
-            };
+                const calcBtn = document.querySelector('.calculate-btn');
+                const originalText = calcBtn.textContent;
+                calcBtn.textContent = 'Calculating...';
+                calcBtn.disabled = true;
 
+                setTimeout(function() {
+                    try {
+                        const dumpsterCapacities = {
+                            2: { trash: 130, cardboard: 70 },
+                            3: { trash: 195, cardboard: 105 },
+                            4: { trash: 260, cardboard: 140 },
+                            6: { trash: 390, cardboard: 210 },
+                            8: { trash: 520, cardboard: 280 }
+                        };
+
+                        const avgElementaryStudents = elementarySchools > 0 ? elementaryStudents / elementarySchools : 0;
+                        const avgSecondaryStudents = secondarySchools > 0 ? secondaryStudents / secondarySchools : 0;
+                        const avgStaff = numberOfSchools > 0 ? staff / numberOfSchools : 0;
+                        
+                        const avgElementaryCardboard = avgElementaryStudents * 23.31;
+                        const avgElementaryTrash = avgElementaryStudents * 75.9;
+                        const avgSecondaryCardboard = avgSecondaryStudents * 11.40;
+                        const avgSecondaryTrash = avgSecondaryStudents * 37.11;
+                        const avgStaffWaste = avgStaff * 33.07;
+                        
+                        let avgCardboardPerSchool, avgTrashPerSchool;
+                        if (elementarySchools > 0 && secondarySchools > 0) {
+                            const totalSchoolWeight = elementarySchools + secondarySchools;
+                            const weightedCardboard = (avgElementaryCardboard * elementarySchools) + (avgSecondaryCardboard * secondarySchools);
+                            const weightedTrash = (avgElementaryTrash * elementarySchools) + (avgSecondaryTrash * secondarySchools) + (avgStaffWaste * numberOfSchools);
+                            avgCardboardPerSchool = weightedCardboard / totalSchoolWeight;
+                            avgTrashPerSchool = weightedTrash / numberOfSchools;
+                        } else if (elementarySchools > 0) {
+                            avgCardboardPerSchool = avgElementaryCardboard;
+                            avgTrashPerSchool = avgElementaryTrash + avgStaffWaste;
+                        } else {
+                            avgCardboardPerSchool = avgSecondaryCardboard;
+                            avgTrashPerSchool = avgSecondaryTrash + avgStaffWaste;
+                        }
+
+                        const trashCapacityPerSchool = dumpsterCapacities[trashDumpsterSize].trash * trashDumpsterCount;
+                        const cardboardCapacityPerSchool = dumpsterCapacities[cardboardDumpsterSize].cardboard * cardboardDumpsterCount;
+
+                        const weeklyCardboard = avgCardboardPerSchool / 52;
+                        const weeklyTrash = avgTrashPerSchool / 52;
+
+                        // Ensure minimum realistic pickup frequency
+                        const weeklyTrashPickupsNeeded = Math.max(1, Math.ceil(weeklyTrash / trashCapacityPerSchool));
+                        const weeklyCardboardPickupsNeeded = Math.max(1, Math.ceil(weeklyCardboard / cardboardCapacityPerSchool));
+                        const totalWeeklyPickups = weeklyTrashPickupsNeeded + weeklyCardboardPickupsNeeded;
+
+                        // Ensure we don't over-reduce pickups (minimum 1 per week total)
+                        const reducedWeeklyPickups = Math.max(1, Math.ceil(totalWeeklyPickups * 0.5));
+
+                        const summerFactorElementary = 0.08;
+                        const summerFactorSecondary = 0.12;
+                        const summerFactorStaff = 0.30;
+                        
+                        const schoolDays = schoolDaysPerYear;
+                        const summerDays = 365 - schoolDays;
+                        
+                        const equivalentDaysSchoolYear = (elementaryStudents + secondaryStudents + staff) * schoolDays;
+                        const equivalentDaysSummer = (elementaryStudents * summerFactorElementary + secondaryStudents * summerFactorSecondary + staff * summerFactorStaff) * summerDays;
+                        const totalEquivalentDays = equivalentDaysSchoolYear + equivalentDaysSummer;
+                        const summerWasteShare = totalEquivalentDays > 0 ? (equivalentDaysSummer / totalEquivalentDays) * 100 : 0;
+                        
+                        const schoolWeeks = schoolDays / 7;
+                        const summerWeeks = summerDays / 7;
+                        
+                        const schoolYearPickupsPerSchool = totalWeeklyPickups * schoolWeeks;
+                        const summerPickupsPerSchool = Math.ceil(totalWeeklyPickups * summerWeeks * (summerWasteShare / 100));
+                        const annualPickupsPerSchool = schoolYearPickupsPerSchool + summerPickupsPerSchool;
+                        
+                        const reducedSchoolYearPickups = Math.ceil(schoolYearPickupsPerSchool * 0.5);
+                        const reducedSummerPickups = Math.ceil(summerPickupsPerSchool * 0.5);
+                        const reducedAnnualPickups = Math.max(52, reducedSchoolYearPickups + reducedSummerPickups); // Minimum 1 pickup per week per year
+
+                        let monthlyEquipmentCostPerSchool = 0;
+                        let totalEquipmentInvestment = 0;
+                        let paybackCalculationBase = 0;
+                        
+                        if (paymentOption === 'rental') {
+                            const monthlyRental = parseFloat(document.getElementById('monthlyRental').value) || 0;
+                            if (monthlyRental === 0) {
+                                alert('Please enter monthly rental cost');
+                                calcBtn.textContent = originalText;
+                                calcBtn.disabled = false;
+                                return;
+                            }
+                            monthlyEquipmentCostPerSchool = monthlyRental;
+                            totalEquipmentInvestment = monthlyRental * numberOfSchools * 12;
+                            paybackCalculationBase = 0;
+                        } else {
+                            const equipmentCostPerSchool = parseFloat(document.getElementById('equipmentCost').value) || 8000;
+                            totalEquipmentInvestment = equipmentCostPerSchool * numberOfSchools;
+                            monthlyEquipmentCostPerSchool = equipmentCostPerSchool / 60;
+                            paybackCalculationBase = totalEquipmentInvestment;
+                        }
+                        
+                        const elementaryCardboard = elementaryStudents * 23.31;
+                        const elementaryTrash = elementaryStudents * 75.9;
+                        const secondaryCardboard = secondaryStudents * 11.40;
+                        const secondaryTrash = secondaryStudents * 37.11;
+                        const staffWaste = staff * 33.07;
+                        
+                        const totalCardboardWaste = elementaryCardboard + secondaryCardboard;
+                        const totalTrashWaste = elementaryTrash + secondaryTrash + staffWaste;
+                        const totalAnnualWasteLbs = totalCardboardWaste + totalTrashWaste;
+                        
+                        const currentAnnualPickupsAllSchools = annualPickupsPerSchool * numberOfSchools;
+                        const reducedAnnualPickupsAllSchools = reducedAnnualPickups * numberOfSchools;
+                        const pickupReductionAllSchools = currentAnnualPickupsAllSchools - reducedAnnualPickupsAllSchools;
+                        const annualWasteCollectionSavings = pickupReductionAllSchools * costPerPickup;
+                        
+                        const monthlyWasteCollectionSavings = annualWasteCollectionSavings / 12;
+                        const totalMonthlyEquipmentCost = monthlyEquipmentCostPerSchool * numberOfSchools;
+                        const monthlyNetSavings = monthlyWasteCollectionSavings - totalMonthlyEquipmentCost;
+                        const annualNetSavings = monthlyNetSavings * 12;
+                        
+                        const fiveYearWasteCollectionSavings = annualWasteCollectionSavings * 5;
+                        let fiveYearEquipmentCost = 0;
+                        
+                        if (paymentOption === 'rental') {
+                            fiveYearEquipmentCost = totalMonthlyEquipmentCost * 60;
+                        } else {
+                            fiveYearEquipmentCost = totalEquipmentInvestment;
+                        }
+                        
+                        const fiveYearNetBenefit = fiveYearWasteCollectionSavings - fiveYearEquipmentCost;
+                        const wasteReduction = annualPickupsPerSchool > 0 ? Math.round((1 - (reducedAnnualPickups / annualPickupsPerSchool)) * 100) : 0;
+
+                        // Calculate payback period after all other calculations
+                        let paybackPeriod = 0;
+                        if (paymentOption === 'purchase' && monthlyWasteCollectionSavings > 0) {
+                            paybackPeriod = paybackCalculationBase / monthlyWasteCollectionSavings;
+                        }
+
+                        calculationResults = {
+                            schoolName: schoolName,
+                            numberOfSchools: numberOfSchools,
+                            totalStudents: totalStudents,
+                            elementaryStudents: elementaryStudents,
+                            secondaryStudents: secondaryStudents,
+                            staff: staff,
+                            schoolDaysPerYear: schoolDaysPerYear,
+                            summerDays: summerDays,
+                            totalAnnualWasteLbs: Math.round(totalAnnualWasteLbs),
+                            cardboardWaste: Math.round(totalCardboardWaste),
+                            trashWaste: Math.round(totalTrashWaste),
+                            trashDumpsterSize: trashDumpsterSize,
+                            trashDumpsterCount: trashDumpsterCount,
+                            cardboardDumpsterSize: cardboardDumpsterSize,
+                            cardboardDumpsterCount: cardboardDumpsterCount,
+                            trashCapacityPerSchool: trashCapacityPerSchool,
+                            cardboardCapacityPerSchool: cardboardCapacityPerSchool,
+                            totalWeeklyPickups: totalWeeklyPickups,
+                            annualPickupsPerSchool: Math.round(annualPickupsPerSchool),
+                            schoolYearPickupsPerSchool: Math.round(schoolYearPickupsPerSchool),
+                            summerPickupsPerSchool: Math.round(summerPickupsPerSchool),
+                            summerWasteShare: Math.round(summerWasteShare * 10) / 10,
+                            reducedWeeklyPickups: reducedWeeklyPickups,
+                            reducedSchoolYearPickups: reducedSchoolYearPickups,
+                            reducedSummerPickups: reducedSummerPickups,
+                            reducedAnnualPickups: Math.round(reducedAnnualPickups),
+                            annualWasteCollectionSavings: Math.max(0, Math.round(annualWasteCollectionSavings)),
+                            annualNetSavings: Math.round(annualNetSavings),
+                            monthlyNetSavings: Math.round(monthlyNetSavings),
+                            monthlyEquipmentCost: Math.round(totalMonthlyEquipmentCost),
+                            paybackPeriod: Math.max(0, Math.round(paybackPeriod * 10) / 10),
+                            fiveYearNetBenefit: Math.round(fiveYearNetBenefit),
+                            wasteReduction: Math.max(0, wasteReduction),
+                            totalEquipmentInvestment: Math.round(totalEquipmentInvestment),
+                            paymentOption: paymentOption
+                        };
+
+                        updateResultsDisplay();
+                        calcBtn.textContent = originalText;
+                        calcBtn.disabled = false;
+
+                    } catch (error) {
+                        console.error('Calculation error:', error);
+                        alert('Error during calculation. Please check your inputs and try again.');
+                        calcBtn.textContent = originalText;
+                        calcBtn.disabled = false;
+                    }
+                }, 100);
+
+            } catch (error) {
+                console.error('Input error:', error);
+                alert('Error reading inputs. Please check your data and try again.');
+            }
+        }
+
+        function updateResultsDisplay() {
             document.getElementById('placeholder').classList.add('hidden');
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('resetBtn').style.display = 'block';
 
-            document.getElementById('annualSavings').textContent = '$' + calculationResults.annualSavings.toLocaleString();
-            document.getElementById('roiPercent').textContent = calculationResults.roi;
+            document.getElementById('annualSavings').textContent = '$' + calculationResults.annualNetSavings.toLocaleString();
+            document.getElementById('monthlyNetSavings').textContent = calculationResults.monthlyNetSavings.toLocaleString();
             document.getElementById('paybackPeriod').textContent = calculationResults.paybackPeriod;
-            document.getElementById('monthlySavings').textContent = calculationResults.monthlyVariableSavings.toLocaleString();
+            document.getElementById('monthlyEquipmentCost').textContent = calculationResults.monthlyEquipmentCost.toLocaleString();
             document.getElementById('wasteReduction').textContent = calculationResults.wasteReduction;
-            document.getElementById('fiveYearSavings').textContent = calculationResults.fiveYearSavings.toLocaleString();
-            document.getElementById('elementarySchoolsDisplay').textContent = calculationResults.elementarySchools;
-            document.getElementById('secondarySchoolsDisplay').textContent = calculationResults.secondarySchools;
-            document.getElementById('elementaryStudentsDisplay').textContent = calculationResults.elementaryStudents.toLocaleString();
-            document.getElementById('secondaryStudentsDisplay').textContent = calculationResults.secondaryStudents.toLocaleString();
+            document.getElementById('fiveYearSavings').textContent = calculationResults.fiveYearNetBenefit.toLocaleString();
+            document.getElementById('totalSchoolsDisplay').textContent = calculationResults.numberOfSchools;
+            document.getElementById('totalStudentsDisplay').textContent = calculationResults.totalStudents.toLocaleString();
             document.getElementById('totalWasteDisplay').textContent = calculationResults.totalAnnualWasteLbs.toLocaleString();
             document.getElementById('cardboardWasteDisplay').textContent = calculationResults.cardboardWaste.toLocaleString();
             document.getElementById('trashWasteDisplay').textContent = calculationResults.trashWaste.toLocaleString();
-            document.getElementById('savingsPerSchool').textContent = calculationResults.savingsPerSchool.toLocaleString();
+            
+            document.getElementById('schoolDaysDisplay').textContent = calculationResults.schoolDaysPerYear;
+            document.getElementById('summerDaysDisplay').textContent = calculationResults.summerDays;
+            document.getElementById('summerWasteShare').textContent = calculationResults.summerWasteShare;
+            document.getElementById('schoolYearPickupsDisplay').textContent = calculationResults.schoolYearPickupsPerSchool;
+            document.getElementById('summerPickupsDisplay').textContent = calculationResults.summerPickupsPerSchool;
+            
+            document.getElementById('trashDumpsterInfo').textContent = calculationResults.trashDumpsterCount + ' x ' + calculationResults.trashDumpsterSize + ' yard (' + calculationResults.trashCapacityPerSchool + ' lbs)';
+            document.getElementById('cardboardDumpsterInfo').textContent = calculationResults.cardboardDumpsterCount + ' x ' + calculationResults.cardboardDumpsterSize + ' yard (' + calculationResults.cardboardCapacityPerSchool + ' lbs)';
+            document.getElementById('weeklyPickups').textContent = calculationResults.totalWeeklyPickups;
+            document.getElementById('reducedWeeklyPickups').textContent = calculationResults.reducedWeeklyPickups;
+            document.getElementById('annualPickups').textContent = calculationResults.annualPickupsPerSchool;
+            document.getElementById('reducedAnnualPickups').textContent = calculationResults.reducedAnnualPickups;
         }
 
         function resetCalculator() {
-            // Clear all input fields
             document.getElementById('schoolName').value = '';
-            document.getElementById('schoolType').selectedIndex = 0;
             document.getElementById('elementarySchools').value = '0';
             document.getElementById('secondarySchools').value = '0';
             document.getElementById('elementaryStudents').value = '';
             document.getElementById('secondaryStudents').value = '';
             document.getElementById('staffCount').value = '';
-            document.getElementById('wastePickups').value = '';
             document.getElementById('costPerPickup').value = '';
             document.getElementById('equipmentCost').value = '8000';
+            document.getElementById('rentalMonths').value = '36';
+            document.getElementById('monthlyRental').value = '';
+            document.getElementById('trashDumpsterSize').value = '4';
+            document.getElementById('trashDumpsterCount').value = '2';
+            document.getElementById('cardboardDumpsterSize').value = '4';
+            document.getElementById('cardboardDumpsterCount').value = '1';
+            document.getElementById('schoolDaysPerYear').value = '180';
             
-            // Reset results
+            selectPaymentOption('purchase');
+            
             calculationResults = null;
             
-            // Show placeholder, hide results, hide reset button
             document.getElementById('placeholder').classList.remove('hidden');
             document.getElementById('results').classList.add('hidden');
             document.getElementById('resetBtn').style.display = 'none';
+            document.getElementById('paymentSummary').classList.add('hidden');
         }
 
         function generatePDFReport() {
@@ -515,84 +642,309 @@ here is the code <!DOCTYPE html>
                 return;
             }
             
-            var printWindow = window.open('', '_blank');
-            var html = '<!DOCTYPE html><html><head>';
-            html += '<title>Waste Management ROI Analysis - ' + calculationResults.schoolName + '</title>';
-            html += '<style>';
-            html += 'body { font-family: Arial, sans-serif; margin: 15px; line-height: 1.2; color: #333; font-size: 11px; }';
-            html += '.header { text-align: center; border-bottom: 2px solid #2563eb; padding-bottom: 15px; margin-bottom: 20px; }';
-            html += '.logo-area { font-size: 18px; font-weight: bold; color: #2563eb; margin-bottom: 8px; }';
-            html += '.school-name { font-size: 16px; margin-bottom: 3px; }';
-            html += '.date { color: #666; font-size: 10px; }';
-            html += '.section { margin-bottom: 18px; }';
-            html += '.section-title { font-size: 14px; font-weight: bold; color: #2563eb; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 10px; }';
-            html += '.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 15px; }';
-            html += '.metric-box { background: #f8fafc; padding: 10px; border-radius: 5px; border-left: 3px solid #2563eb; }';
-            html += '.metric-label { font-size: 9px; color: #666; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }';
-            html += '.metric-value { font-size: 16px; font-weight: bold; color: #2563eb; line-height: 1; }';
-            html += '.metric-unit { font-size: 9px; color: #666; margin-top: 2px; }';
-            html += '.highlight-box { background: #10b981; color: white; padding: 15px; border-radius: 5px; text-align: center; margin: 15px 0; }';
-            html += '.highlight-value { font-size: 24px; font-weight: bold; line-height: 1; }';
-            html += '.highlight-label { font-size: 12px; margin-top: 3px; }';
-            html += '.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }';
-            html += '.summary-box { background: #f0f9ff; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 10px; }';
-            html += '.footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 9px; color: #666; }';
-            html += '@media print { body { margin: 10px; } .section { page-break-inside: avoid; } }';
-            html += '</style></head><body>';
-            
-            html += '<div class="header">';
-            html += '<div class="logo-area">MIL-TEK Waste Management Analysis</div>';
-            html += '<div class="school-name">' + calculationResults.schoolName + '</div>';
-            html += '<div class="date">Analysis Date: ' + new Date().toLocaleDateString() + '</div>';
-            html += '</div>';
-
-            html += '<div class="highlight-box">';
-            html += '<div class="highlight-value">$' + calculationResults.annualSavings.toLocaleString() + '</div>';
-            html += '<div class="highlight-label">ESTIMATED ANNUAL SAVINGS</div>';
-            html += '</div>';
-
-            html += '<div class="section">';
-            html += '<div class="section-title">District Overview</div>';
-            html += '<div class="metric-grid">';
-            html += '<div class="metric-box"><div class="metric-label">Elementary Schools</div><div class="metric-value">' + calculationResults.elementarySchools + '</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Secondary Schools</div><div class="metric-value">' + calculationResults.secondarySchools + '</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Total Students</div><div class="metric-value">' + calculationResults.totalStudents.toLocaleString() + '</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Total Staff</div><div class="metric-value">' + calculationResults.staff.toLocaleString() + '</div></div>';
-            html += '</div></div>';
-
-            html += '<div class="section">';
-            html += '<div class="section-title">Waste Generation</div>';
-            html += '<div class="metric-grid">';
-            html += '<div class="metric-box"><div class="metric-label">Total Annual Waste</div><div class="metric-value">' + calculationResults.totalAnnualWasteLbs.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Cardboard Waste</div><div class="metric-value">' + calculationResults.cardboardWaste.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">General Trash Waste</div><div class="metric-value">' + calculationResults.trashWaste.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Elementary Cardboard</div><div class="metric-value">23.31</div><div class="metric-unit">lbs per student/year</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Secondary Cardboard</div><div class="metric-value">11.40</div><div class="metric-unit">lbs per student/year</div></div>';
-            html += '</div></div>';
-
-            html += '<div class="section">';
-            html += '<div class="section-title">Return on Investment</div>';
-            html += '<div class="metric-grid">';
-            html += '<div class="metric-box"><div class="metric-label">Equipment Investment</div><div class="metric-value">$' + calculationResults.totalEquipmentCost.toLocaleString() + '</div><div class="metric-unit">' + calculationResults.numberOfSchools + ' schools</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Payback Period</div><div class="metric-value">' + calculationResults.paybackPeriod + '</div><div class="metric-unit">months</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">5-Year ROI</div><div class="metric-value">' + calculationResults.roi + '%</div></div>';
-            html += '<div class="metric-box"><div class="metric-label">Per School Savings</div><div class="metric-value">$' + calculationResults.savingsPerSchool.toLocaleString() + '</div><div class="metric-unit">annually</div></div>';
-            html += '</div></div>';
-
-            html += '<div class="footer">';
-            html += '<p><strong>Note:</strong> Analysis based on industry research showing elementary students generate 99.21 lbs total waste/year (23.31 lbs cardboard + 75.9 lbs general waste), secondary students generate 48.51 lbs total waste/year (11.40 lbs cardboard + 37.11 lbs general waste). Staff generate 33.07 lbs waste/year.</p>';
-            html += '<p><strong>Mil-tek USA</strong> | Leading provider of waste management solutions for educational institutions | www.miltekusa.com</p>';
-            html += '</div>';
-            
-            html += '</body></html>';
-            
-            printWindow.document.write(html);
-            printWindow.document.close();
-            printWindow.focus();
-            setTimeout(function() { 
-                printWindow.print(); 
-            }, 500);
+            try {
+                const reportContent = createReportHTML();
+                const newTab = window.open();
+                
+                if (newTab) {
+                    newTab.document.write(reportContent);
+                    newTab.document.close();
+                    
+                    newTab.document.body.innerHTML += '<div style="text-align: center; margin: 20px;"><button onclick="window.print()" style="padding: 10px 20px; background: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Print Report</button></div>';
+                } else {
+                    const blob = new Blob([reportContent], { type: 'text/html' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = calculationResults.schoolName.replace(/[^a-z0-9]/gi, '_') + '_waste_analysis.html';
+                    link.click();
+                    URL.revokeObjectURL(url);
+                }
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('Unable to generate PDF. Please check your browser settings.');
+            }
         }
+
+        function createReportHTML() {
+            return `<!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Management Analysis Report</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 15px; 
+            color: #333; 
+            line-height: 1.4; 
+            font-size: 11px;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 15px; 
+            page-break-inside: avoid;
+        }
+        .header h1 { 
+            font-size: 18px; 
+            margin: 0 0 5px 0; 
+            color: #1e40af; 
+        }
+        .header h2 { 
+            font-size: 14px; 
+            margin: 0 0 5px 0; 
+            color: #374151; 
+        }
+        .header p { 
+            font-size: 10px; 
+            margin: 0; 
+            color: #64748b; 
+        }
+        .highlight { 
+            background: #10b981; 
+            color: white; 
+            padding: 10px; 
+            text-align: center; 
+            margin: 10px 0; 
+            border-radius: 5px;
+            page-break-inside: avoid;
+        }
+        .highlight h3 { 
+            font-size: 14px; 
+            margin: 0 0 5px 0; 
+        }
+        .highlight p { 
+            font-size: 12px; 
+            margin: 0; 
+        }
+        .grid-2 { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin-bottom: 15px;
+        }
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 10px; 
+            margin-bottom: 15px;
+        }
+        .section { 
+            margin-bottom: 12px; 
+            page-break-inside: avoid;
+        }
+        .section h3 { 
+            color: #2563eb; 
+            border-bottom: 1px solid #ddd; 
+            padding-bottom: 3px; 
+            margin: 0 0 8px 0; 
+            font-size: 12px;
+        }
+        .section p { 
+            margin: 2px 0; 
+            font-size: 10px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 9px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f8fafc;
+            font-weight: bold;
+        }
+        .calculation-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+        .formula {
+            font-family: monospace;
+            background: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 8px;
+        }
+        @media print { 
+            button { display: none; }
+            body { margin: 10px; }
+            .section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MIL-TEK Waste Management Analysis</h1>
+        <h2>${calculationResults.schoolName}</h2>
+        <p>Analysis Date: ${new Date().toLocaleDateString()}</p>
+    </div>
+
+    <div class="highlight">
+        <h3>Net Annual Savings: ${calculationResults.annualNetSavings.toLocaleString()}</h3>
+        <p>Monthly Net Savings: ${calculationResults.monthlyNetSavings.toLocaleString()} | 5-Year Net Benefit: ${calculationResults.fiveYearNetBenefit.toLocaleString()}</p>
+    </div>
+
+    <div class="grid-2">
+        <div class="section">
+            <h3>Input Parameters</h3>
+            <table class="data-table">
+                <tr><th>Parameter</th><th>Value</th></tr>
+                <tr><td>Elementary Schools</td><td>${calculationResults.elementaryStudents > 0 ? Math.ceil(calculationResults.elementaryStudents / (calculationResults.elementaryStudents / (calculationResults.numberOfSchools > 1 ? calculationResults.numberOfSchools : 1))) : 0}</td></tr>
+                <tr><td>Secondary Schools</td><td>${calculationResults.secondaryStudents > 0 ? Math.ceil(calculationResults.secondaryStudents / (calculationResults.secondaryStudents / (calculationResults.numberOfSchools > 1 ? calculationResults.numberOfSchools : 1))) : 0}</td></tr>
+                <tr><td>Elementary Students</td><td>${calculationResults.elementaryStudents.toLocaleString()}</td></tr>
+                <tr><td>Secondary Students</td><td>${calculationResults.secondaryStudents.toLocaleString()}</td></tr>
+                <tr><td>Total Staff</td><td>${calculationResults.staff.toLocaleString()}</td></tr>
+                <tr><td>Cost Per Pickup</td><td>${(calculationResults.annualWasteCollectionSavings / ((calculationResults.annualPickupsPerSchool * calculationResults.numberOfSchools) - (calculationResults.reducedAnnualPickups * calculationResults.numberOfSchools))).toFixed(2)}</td></tr>
+                <tr><td>School Days/Year</td><td>${calculationResults.schoolDaysPerYear}</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>Waste Generation Factors</h3>
+            <div class="calculation-box">
+                <strong>Per Student/Staff Annual Waste (lbs):</strong><br>
+                • Elementary Student Cardboard: <span class="formula">23.31 lbs</span><br>
+                • Elementary Student Trash: <span class="formula">75.9 lbs</span><br>
+                • Secondary Student Cardboard: <span class="formula">11.40 lbs</span><br>
+                • Secondary Student Trash: <span class="formula">37.11 lbs</span><br>
+                • Staff Member: <span class="formula">33.07 lbs</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="section">
+            <h3>Dumpster Configuration & Capacity</h3>
+            <table class="data-table">
+                <tr><th>Type</th><th>Size</th><th>Count/School</th><th>Capacity (lbs)</th></tr>
+                <tr><td>Trash</td><td>${calculationResults.trashDumpsterSize} yard</td><td>${calculationResults.trashDumpsterCount}</td><td>${calculationResults.trashCapacityPerSchool}</td></tr>
+                <tr><td>Cardboard</td><td>${calculationResults.cardboardDumpsterSize} yard</td><td>${calculationResults.cardboardDumpsterCount}</td><td>${calculationResults.cardboardCapacityPerSchool}</td></tr>
+            </table>
+            <div class="calculation-box">
+                <strong>Dumpster Capacity Formula:</strong><br>
+                <span class="formula">2-yard = 130/70 lbs, 3-yard = 195/105 lbs, 4-yard = 260/140 lbs, 6-yard = 390/210 lbs, 8-yard = 520/280 lbs</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Summer Activity Factors</h3>
+            <div class="calculation-box">
+                <strong>Summer Waste Reduction:</strong><br>
+                • Elementary Students: <span class="formula">8% of school year</span><br>
+                • Secondary Students: <span class="formula">12% of school year</span><br>
+                • Staff: <span class="formula">30% of school year</span><br>
+                <strong>Summer Days:</strong> <span class="formula">${calculationResults.summerDays} days</span><br>
+                <strong>Summer Waste Share:</strong> <span class="formula">${calculationResults.summerWasteShare}%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-3">
+        <div class="section">
+            <h3>Waste Calculations</h3>
+            <table class="data-table">
+                <tr><th>Type</th><th>Annual Waste (lbs)</th></tr>
+                <tr><td>Elementary Cardboard</td><td>${Math.round(calculationResults.elementaryStudents * 23.31).toLocaleString()}</td></tr>
+                <tr><td>Elementary Trash</td><td>${Math.round(calculationResults.elementaryStudents * 75.9).toLocaleString()}</td></tr>
+                <tr><td>Secondary Cardboard</td><td>${Math.round(calculationResults.secondaryStudents * 11.40).toLocaleString()}</td></tr>
+                <tr><td>Secondary Trash</td><td>${Math.round(calculationResults.secondaryStudents * 37.11).toLocaleString()}</td></tr>
+                <tr><td>Staff Waste</td><td>${Math.round(calculationResults.staff * 33.07).toLocaleString()}</td></tr>
+                <tr><td><strong>Total Cardboard</strong></td><td><strong>${calculationResults.cardboardWaste.toLocaleString()}</strong></td></tr>
+                <tr><td><strong>Total Trash</strong></td><td><strong>${calculationResults.trashWaste.toLocaleString()}</strong></td></tr>
+                <tr><td><strong>Grand Total</strong></td><td><strong>${calculationResults.totalAnnualWasteLbs.toLocaleString()}</strong></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>Pickup Analysis (Per School)</h3>
+            <table class="data-table">
+                <tr><th>Period</th><th>Current</th><th>Reduced</th></tr>
+                <tr><td>Weekly Pickups</td><td>${calculationResults.totalWeeklyPickups}</td><td>${calculationResults.reducedWeeklyPickups}</td></tr>
+                <tr><td>School Year Pickups</td><td>${calculationResults.schoolYearPickupsPerSchool}</td><td>${calculationResults.reducedSchoolYearPickups}</td></tr>
+                <tr><td>Summer Pickups</td><td>${calculationResults.summerPickupsPerSchool}</td><td>${calculationResults.reducedSummerPickups}</td></tr>
+                <tr><td><strong>Annual Total</strong></td><td><strong>${calculationResults.annualPickupsPerSchool}</strong></td><td><strong>${calculationResults.reducedAnnualPickups}</strong></td></tr>
+            </table>
+            <div class="calculation-box">
+                <strong>Reduction Formula:</strong> <span class="formula">50% pickup reduction with compaction</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Financial Calculations</h3>
+            <table class="data-table">
+                <tr><th>Component</th><th>Amount</th></tr>
+                <tr><td>Current Annual Pickups (All Schools)</td><td>${(calculationResults.annualPickupsPerSchool * calculationResults.numberOfSchools).toLocaleString()}</td></tr>
+                <tr><td>Reduced Annual Pickups (All Schools)</td><td>${(calculationResults.reducedAnnualPickups * calculationResults.numberOfSchools).toLocaleString()}</td></tr>
+                <tr><td>Pickup Reduction</td><td>${((calculationResults.annualPickupsPerSchool * calculationResults.numberOfSchools) - (calculationResults.reducedAnnualPickups * calculationResults.numberOfSchools)).toLocaleString()}</td></tr>
+                <tr><td>Annual Collection Savings</td><td>${calculationResults.annualWasteCollectionSavings.toLocaleString()}</td></tr>
+                <tr><td>Monthly Collection Savings</td><td>${Math.round(calculationResults.annualWasteCollectionSavings / 12).toLocaleString()}</td></tr>
+                <tr><td>Monthly Equipment Cost</td><td>${calculationResults.monthlyEquipmentCost.toLocaleString()}</td></tr>
+                <tr><td><strong>Monthly Net Savings</strong></td><td><strong>${calculationResults.monthlyNetSavings.toLocaleString()}</strong></td></tr>
+                <tr><td><strong>Annual Net Savings</strong></td><td><strong>${calculationResults.annualNetSavings.toLocaleString()}</strong></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="section">
+            <h3>Equipment Investment</h3>
+            <div class="calculation-box">
+                <strong>Payment Option:</strong> ${calculationResults.paymentOption === 'rental' ? 'Monthly Rental' : 'Outright Purchase'}<br>
+                <strong>Total Investment:</strong> ${calculationResults.totalEquipmentInvestment.toLocaleString()}<br>
+                <strong>Equipment Cost per School:</strong> ${Math.round(calculationResults.totalEquipmentInvestment / calculationResults.numberOfSchools).toLocaleString()}<br>
+                ${calculationResults.paymentOption === 'purchase' ? `<strong>Payback Period:</strong> ${calculationResults.paybackPeriod} months<br>` : ''}
+                <strong>5-Year Equipment Cost:</strong> ${calculationResults.paymentOption === 'rental' ? (calculationResults.monthlyEquipmentCost * 60).toLocaleString() : calculationResults.totalEquipmentInvestment.toLocaleString()}<br>
+                <strong>5-Year Collection Savings:</strong> ${(calculationResults.annualWasteCollectionSavings * 5).toLocaleString()}<br>
+                <strong>5-Year Net Benefit:</strong> ${calculationResults.fiveYearNetBenefit.toLocaleString()}
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Key Performance Metrics</h3>
+            <table class="data-table">
+                <tr><th>Metric</th><th>Value</th></tr>
+                <tr><td>Total Schools</td><td>${calculationResults.numberOfSchools}</td></tr>
+                <tr><td>Total Students</td><td>${calculationResults.totalStudents.toLocaleString()}</td></tr>
+                <tr><td>Waste Reduction</td><td>${calculationResults.wasteReduction}%</td></tr>
+                <tr><td>Annual Waste per Student</td><td>${Math.round(calculationResults.totalAnnualWasteLbs / calculationResults.totalStudents)} lbs</td></tr>
+                <tr><td>Weekly Waste per School</td><td>${Math.round((calculationResults.totalAnnualWasteLbs / calculationResults.numberOfSchools) / 52)} lbs</td></tr>
+                <tr><td>Pickups Eliminated Annually</td><td>${((calculationResults.annualPickupsPerSchool * calculationResults.numberOfSchools) - (calculationResults.reducedAnnualPickups * calculationResults.numberOfSchools)).toLocaleString()}</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Calculation Methodology</h3>
+        <div class="calculation-box">
+            <strong>Waste Generation:</strong> Based on industry standards per student/staff type × population<br>
+            <strong>Pickup Frequency:</strong> Weekly waste ÷ dumpster capacity, minimum 1 pickup/week<br>
+            <strong>Summer Adjustment:</strong> Reduced activity factors applied to equivalent person-days<br>
+            <strong>Compaction Benefit:</strong> 50% reduction in pickup frequency with MIL-TEK equipment<br>
+            <strong>ROI Calculation:</strong> (Collection Savings - Equipment Cost) over time periods<br>
+            <strong>Payback Period:</strong> Equipment Investment ÷ Monthly Collection Savings
+        </div>
+    </div>
+</body>
+</html>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('elementarySchools').addEventListener('input', updatePaymentSummary);
+            document.getElementById('secondarySchools').addEventListener('input', updatePaymentSummary);
+            document.getElementById('rentalMonths').addEventListener('input', updatePaymentSummary);
+            document.getElementById('monthlyRental').addEventListener('input', updatePaymentSummary);
+            document.getElementById('equipmentCost').addEventListener('input', updatePaymentSummary);
+            
+            selectPaymentOption('purchase');
+        });
     </script>
 </body>
 </html>
