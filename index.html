@@ -1,2 +1,594 @@
-file:///C:/Users/Tommy%20Ball/Downloads/school_waste_calculator_html%20(8).html
+here is the code <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School District Waste Management Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-section, .results-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .results-highlight {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .results-highlight h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .results-highlight .amount {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .results-highlight .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .benefits-section {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .benefits-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #374151;
+        }
+
+        .benefit-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .benefit-row:last-child {
+            border-bottom: none;
+        }
+
+        .generate-pdf-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .placeholder-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+
+        .placeholder-results .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏫 School District Waste Management Calculator</h1>
+            <p>Calculate your potential savings with Mil-tek waste compaction equipment</p>
+        </div>
+
+        <div class="calculator-grid">
+            <div class="input-section">
+                <div class="section-header" style="color: #1e40af;">
+                    <span style="font-size: 1.5rem;">🏫</span>
+                    <h2>School Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="schoolName">School/District Name</label>
+                    <input type="text" id="schoolName" placeholder="Enter school or district name">
+                </div>
+
+                <div class="form-group">
+                    <label for="schoolType">Primary School Type in District</label>
+                    <select id="schoolType">
+                        <option value="elementary">Elementary Focused District</option>
+                        <option value="secondary">Secondary Focused District</option>
+                        <option value="mixed">Mixed Elementary & Secondary District</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="elementarySchools">Number of Elementary Schools</label>
+                        <input type="number" id="elementarySchools" placeholder="2" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="secondarySchools">Number of Secondary Schools</label>
+                        <input type="number" id="secondarySchools" placeholder="1" value="0">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="elementaryStudents">Elementary Students (Total)</label>
+                        <input type="number" id="elementaryStudents" placeholder="300">
+                    </div>
+                    <div class="form-group">
+                        <label for="secondaryStudents">Secondary Students (Total)</label>
+                        <input type="number" id="secondaryStudents" placeholder="200">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="staffCount">Total Staff (All Schools)</label>
+                    <input type="number" id="staffCount" placeholder="50">
+                </div>
+
+                <div class="section-header" style="color: #059669; margin-top: 30px;">
+                    <span style="font-size: 1.5rem;">💰</span>
+                    <h2>Current Waste Costs</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="wastePickups">Waste Pickups Per Week (Per School)</label>
+                    <input type="number" id="wastePickups" placeholder="3">
+                </div>
+
+                <div class="form-group">
+                    <label for="costPerPickup">Cost Per Pickup ($)</label>
+                    <input type="number" id="costPerPickup" placeholder="150">
+                </div>
+
+                <div class="form-group">
+                    <label for="equipmentCost">Mil-tek Equipment Cost per School ($)</label>
+                    <input type="number" id="equipmentCost" placeholder="8000" value="8000">
+                </div>
+
+                <button class="calculate-btn" onclick="calculateResults()">
+                    📊 Calculate ROI & Generate Report
+                </button>
+                
+                <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563); display: none;" id="resetBtn">
+                    🔄 Reset Calculator
+                </button>
+            </div>
+
+            <div class="results-section">
+                <div id="placeholder" class="placeholder-results">
+                    <div class="icon">🧮</div>
+                    <h3 style="margin-bottom: 10px;">Ready to Calculate</h3>
+                    <p>Enter your school information and current waste costs to see potential savings</p>
+                </div>
+
+                <div id="results" class="hidden">
+                    <div class="results-highlight">
+                        <h3>Estimated Annual Savings</h3>
+                        <div class="amount" id="annualSavings">$0</div>
+                        <div class="subtitle">ROI: <span id="roiPercent">0</span>% over 5 years</div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Payback Period</div>
+                            <div class="metric-value"><span id="paybackPeriod">0</span> months</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Monthly Savings</div>
+                            <div class="metric-value">$<span id="monthlySavings">0</span></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Waste Reduction</div>
+                            <div class="metric-value"><span id="wasteReduction">0</span>%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">5-Year Net Savings</div>
+                            <div class="metric-value">$<span id="fiveYearSavings">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-section">
+                        <h4>♻️ District Benefits</h4>
+                        <div class="benefit-row">
+                            <span>Elementary Schools:</span>
+                            <span><strong><span id="elementarySchoolsDisplay">0</span> schools</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Secondary Schools:</span>
+                            <span><strong><span id="secondarySchoolsDisplay">0</span> schools</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Elementary Students:</span>
+                            <span><strong><span id="elementaryStudentsDisplay">0</span> students</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Secondary Students:</span>
+                            <span><strong><span id="secondaryStudentsDisplay">0</span> students</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Total Annual Waste:</span>
+                            <span><strong><span id="totalWasteDisplay">0</span> lbs/year</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Cardboard Waste:</span>
+                            <span><strong><span id="cardboardWasteDisplay">0</span> lbs/year</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>General Trash Waste:</span>
+                            <span><strong><span id="trashWasteDisplay">0</span> lbs/year</strong></span>
+                        </div>
+                        <div class="benefit-row">
+                            <span>Annual Savings per School:</span>
+                            <span><strong>$<span id="savingsPerSchool">0</span></strong></span>
+                        </div>
+                    </div>
+
+                    <button class="generate-pdf-btn" onclick="generatePDFReport()">
+                        📄 Generate PDF Report
+                    </button>
+                    
+                    <button class="calculate-btn" onclick="resetCalculator()" style="margin-top: 15px; background: linear-gradient(135deg, #6b7280, #4b5563);">
+                        🔄 New Calculation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var calculationResults = null;
+
+        function calculateResults() {
+            var schoolName = document.getElementById('schoolName').value || 'Your School District';
+            var elementarySchools = parseInt(document.getElementById('elementarySchools').value) || 0;
+            var secondarySchools = parseInt(document.getElementById('secondarySchools').value) || 0;
+            var numberOfSchools = elementarySchools + secondarySchools;
+            var elementaryStudents = parseInt(document.getElementById('elementaryStudents').value) || 0;
+            var secondaryStudents = parseInt(document.getElementById('secondaryStudents').value) || 0;
+            var totalStudents = elementaryStudents + secondaryStudents;
+            var staff = parseInt(document.getElementById('staffCount').value) || 0;
+            var pickups = parseInt(document.getElementById('wastePickups').value) || 0;
+            var costPerPickup = parseFloat(document.getElementById('costPerPickup').value) || 0;
+            var equipmentCostPerSchool = parseFloat(document.getElementById('equipmentCost').value) || 8000;
+
+            if (numberOfSchools === 0 || totalStudents === 0 || pickups === 0 || costPerPickup === 0) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            var totalEquipmentCost = equipmentCostPerSchool * numberOfSchools;
+            
+            // Calculate waste generation in lbs per year
+            var elementaryCardboard = elementaryStudents * 23.31;  // 23.5% of 99.21
+            var elementaryTrash = elementaryStudents * 75.9;       // 76.5% of 99.21
+            var secondaryCardboard = secondaryStudents * 11.40;    // 23.5% of 48.51
+            var secondaryTrash = secondaryStudents * 37.11;        // 76.5% of 48.51
+            var staffWaste = staff * 33.07;
+            
+            var totalCardboardWaste = elementaryCardboard + secondaryCardboard;
+            var totalTrashWaste = elementaryTrash + secondaryTrash + staffWaste;
+            var totalAnnualWasteLbs = totalCardboardWaste + totalTrashWaste;
+            
+            var annualWasteCollectionCostPerSchool = pickups * costPerPickup * 36;
+            var totalAnnualWasteCollectionCost = annualWasteCollectionCostPerSchool * numberOfSchools;
+
+            var newPickupsNeeded = Math.ceil(pickups * 0.5);
+            var newAnnualCostPerSchool = newPickupsNeeded * costPerPickup * 36;
+            var totalNewAnnualCost = newAnnualCostPerSchool * numberOfSchools;
+            
+            var annualSavings = totalAnnualWasteCollectionCost - totalNewAnnualCost;
+            var monthlyVariableSavings = annualSavings / 12;
+            var paybackPeriod = monthlyVariableSavings > 0 ? totalEquipmentCost / monthlyVariableSavings : 0;
+            
+            var fiveYearSavings = (annualSavings * 5) - totalEquipmentCost;
+            var roi = totalEquipmentCost > 0 ? Math.round((fiveYearSavings / totalEquipmentCost) * 100) : 0;
+
+            var avgElementaryStudents = elementarySchools > 0 ? Math.round(elementaryStudents / elementarySchools) : 0;
+            var avgSecondaryStudents = secondarySchools > 0 ? Math.round(secondaryStudents / secondarySchools) : 0;
+
+            calculationResults = {
+                schoolName: schoolName,
+                elementarySchools: elementarySchools,
+                secondarySchools: secondarySchools,
+                numberOfSchools: numberOfSchools,
+                elementaryStudents: elementaryStudents,
+                secondaryStudents: secondaryStudents,
+                totalStudents: totalStudents,
+                staff: staff,
+                avgElementaryStudents: avgElementaryStudents,
+                avgSecondaryStudents: avgSecondaryStudents,
+                totalAnnualWasteLbs: Math.round(totalAnnualWasteLbs),
+                cardboardWaste: Math.round(totalCardboardWaste),
+                trashWaste: Math.round(totalTrashWaste),
+                currentAnnualCost: Math.round(totalAnnualWasteCollectionCost),
+                newAnnualCost: Math.round(totalNewAnnualCost),
+                annualSavings: Math.round(annualSavings),
+                monthlyVariableSavings: Math.round(monthlyVariableSavings),
+                paybackPeriod: Math.round(paybackPeriod * 10) / 10,
+                fiveYearSavings: Math.round(fiveYearSavings),
+                roi: roi,
+                equipmentCostPerSchool: equipmentCostPerSchool,
+                totalEquipmentCost: totalEquipmentCost,
+                currentPickups: pickups,
+                newPickups: newPickupsNeeded,
+                wasteReduction: Math.round((1 - (newPickupsNeeded / pickups)) * 100),
+                savingsPerSchool: Math.round(annualSavings / numberOfSchools)
+            };
+
+            document.getElementById('placeholder').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('resetBtn').style.display = 'block';
+
+            document.getElementById('annualSavings').textContent = '$' + calculationResults.annualSavings.toLocaleString();
+            document.getElementById('roiPercent').textContent = calculationResults.roi;
+            document.getElementById('paybackPeriod').textContent = calculationResults.paybackPeriod;
+            document.getElementById('monthlySavings').textContent = calculationResults.monthlyVariableSavings.toLocaleString();
+            document.getElementById('wasteReduction').textContent = calculationResults.wasteReduction;
+            document.getElementById('fiveYearSavings').textContent = calculationResults.fiveYearSavings.toLocaleString();
+            document.getElementById('elementarySchoolsDisplay').textContent = calculationResults.elementarySchools;
+            document.getElementById('secondarySchoolsDisplay').textContent = calculationResults.secondarySchools;
+            document.getElementById('elementaryStudentsDisplay').textContent = calculationResults.elementaryStudents.toLocaleString();
+            document.getElementById('secondaryStudentsDisplay').textContent = calculationResults.secondaryStudents.toLocaleString();
+            document.getElementById('totalWasteDisplay').textContent = calculationResults.totalAnnualWasteLbs.toLocaleString();
+            document.getElementById('cardboardWasteDisplay').textContent = calculationResults.cardboardWaste.toLocaleString();
+            document.getElementById('trashWasteDisplay').textContent = calculationResults.trashWaste.toLocaleString();
+            document.getElementById('savingsPerSchool').textContent = calculationResults.savingsPerSchool.toLocaleString();
+        }
+
+        function resetCalculator() {
+            // Clear all input fields
+            document.getElementById('schoolName').value = '';
+            document.getElementById('schoolType').selectedIndex = 0;
+            document.getElementById('elementarySchools').value = '0';
+            document.getElementById('secondarySchools').value = '0';
+            document.getElementById('elementaryStudents').value = '';
+            document.getElementById('secondaryStudents').value = '';
+            document.getElementById('staffCount').value = '';
+            document.getElementById('wastePickups').value = '';
+            document.getElementById('costPerPickup').value = '';
+            document.getElementById('equipmentCost').value = '8000';
+            
+            // Reset results
+            calculationResults = null;
+            
+            // Show placeholder, hide results, hide reset button
+            document.getElementById('placeholder').classList.remove('hidden');
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('resetBtn').style.display = 'none';
+        }
+
+        function generatePDFReport() {
+            if (!calculationResults) {
+                alert('Please calculate results first');
+                return;
+            }
+            
+            var printWindow = window.open('', '_blank');
+            var html = '<!DOCTYPE html><html><head>';
+            html += '<title>Waste Management ROI Analysis - ' + calculationResults.schoolName + '</title>';
+            html += '<style>';
+            html += 'body { font-family: Arial, sans-serif; margin: 15px; line-height: 1.2; color: #333; font-size: 11px; }';
+            html += '.header { text-align: center; border-bottom: 2px solid #2563eb; padding-bottom: 15px; margin-bottom: 20px; }';
+            html += '.logo-area { font-size: 18px; font-weight: bold; color: #2563eb; margin-bottom: 8px; }';
+            html += '.school-name { font-size: 16px; margin-bottom: 3px; }';
+            html += '.date { color: #666; font-size: 10px; }';
+            html += '.section { margin-bottom: 18px; }';
+            html += '.section-title { font-size: 14px; font-weight: bold; color: #2563eb; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 10px; }';
+            html += '.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 15px; }';
+            html += '.metric-box { background: #f8fafc; padding: 10px; border-radius: 5px; border-left: 3px solid #2563eb; }';
+            html += '.metric-label { font-size: 9px; color: #666; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }';
+            html += '.metric-value { font-size: 16px; font-weight: bold; color: #2563eb; line-height: 1; }';
+            html += '.metric-unit { font-size: 9px; color: #666; margin-top: 2px; }';
+            html += '.highlight-box { background: #10b981; color: white; padding: 15px; border-radius: 5px; text-align: center; margin: 15px 0; }';
+            html += '.highlight-value { font-size: 24px; font-weight: bold; line-height: 1; }';
+            html += '.highlight-label { font-size: 12px; margin-top: 3px; }';
+            html += '.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }';
+            html += '.summary-box { background: #f0f9ff; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 10px; }';
+            html += '.footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 9px; color: #666; }';
+            html += '@media print { body { margin: 10px; } .section { page-break-inside: avoid; } }';
+            html += '</style></head><body>';
+            
+            html += '<div class="header">';
+            html += '<div class="logo-area">MIL-TEK Waste Management Analysis</div>';
+            html += '<div class="school-name">' + calculationResults.schoolName + '</div>';
+            html += '<div class="date">Analysis Date: ' + new Date().toLocaleDateString() + '</div>';
+            html += '</div>';
+
+            html += '<div class="highlight-box">';
+            html += '<div class="highlight-value">$' + calculationResults.annualSavings.toLocaleString() + '</div>';
+            html += '<div class="highlight-label">ESTIMATED ANNUAL SAVINGS</div>';
+            html += '</div>';
+
+            html += '<div class="section">';
+            html += '<div class="section-title">District Overview</div>';
+            html += '<div class="metric-grid">';
+            html += '<div class="metric-box"><div class="metric-label">Elementary Schools</div><div class="metric-value">' + calculationResults.elementarySchools + '</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Secondary Schools</div><div class="metric-value">' + calculationResults.secondarySchools + '</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Total Students</div><div class="metric-value">' + calculationResults.totalStudents.toLocaleString() + '</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Total Staff</div><div class="metric-value">' + calculationResults.staff.toLocaleString() + '</div></div>';
+            html += '</div></div>';
+
+            html += '<div class="section">';
+            html += '<div class="section-title">Waste Generation</div>';
+            html += '<div class="metric-grid">';
+            html += '<div class="metric-box"><div class="metric-label">Total Annual Waste</div><div class="metric-value">' + calculationResults.totalAnnualWasteLbs.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Cardboard Waste</div><div class="metric-value">' + calculationResults.cardboardWaste.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">General Trash Waste</div><div class="metric-value">' + calculationResults.trashWaste.toLocaleString() + '</div><div class="metric-unit">lbs per year</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Elementary Cardboard</div><div class="metric-value">23.31</div><div class="metric-unit">lbs per student/year</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Secondary Cardboard</div><div class="metric-value">11.40</div><div class="metric-unit">lbs per student/year</div></div>';
+            html += '</div></div>';
+
+            html += '<div class="section">';
+            html += '<div class="section-title">Return on Investment</div>';
+            html += '<div class="metric-grid">';
+            html += '<div class="metric-box"><div class="metric-label">Equipment Investment</div><div class="metric-value">$' + calculationResults.totalEquipmentCost.toLocaleString() + '</div><div class="metric-unit">' + calculationResults.numberOfSchools + ' schools</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Payback Period</div><div class="metric-value">' + calculationResults.paybackPeriod + '</div><div class="metric-unit">months</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">5-Year ROI</div><div class="metric-value">' + calculationResults.roi + '%</div></div>';
+            html += '<div class="metric-box"><div class="metric-label">Per School Savings</div><div class="metric-value">$' + calculationResults.savingsPerSchool.toLocaleString() + '</div><div class="metric-unit">annually</div></div>';
+            html += '</div></div>';
+
+            html += '<div class="footer">';
+            html += '<p><strong>Note:</strong> Analysis based on industry research showing elementary students generate 99.21 lbs total waste/year (23.31 lbs cardboard + 75.9 lbs general waste), secondary students generate 48.51 lbs total waste/year (11.40 lbs cardboard + 37.11 lbs general waste). Staff generate 33.07 lbs waste/year.</p>';
+            html += '<p><strong>Mil-tek USA</strong> | Leading provider of waste management solutions for educational institutions | www.miltekusa.com</p>';
+            html += '</div>';
+            
+            html += '</body></html>';
+            
+            printWindow.document.write(html);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(function() { 
+                printWindow.print(); 
+            }, 500);
+        }
+    </script>
+</body>
+</html>
